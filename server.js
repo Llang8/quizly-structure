@@ -12,6 +12,9 @@ const app = express()
 
 connectDB()
 
+app.use(authenticate)
+app.use(cookieParser())
+
 app.use("/graphql", graphqlHTTP({
     schema,
     graphiql: true
@@ -23,7 +26,7 @@ app.set('view engine', 'ejs');
 // update location of views folder that res.render pulls from
 app.set('views', path.join(__dirname, '/src/templates/views'));
 
-app.use(authenticate)
+app.use(express.urlencoded({ extended: true }))
 
 /* Initialize Routes */
 require("./src/routes")(app)
