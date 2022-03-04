@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const { connectDB } = require('./src/db')
 const { graphqlHTTP } = require('express-graphql')
 const schema = require('./src/graphql/schema')
+const { authenticate } = require('./src/middleware/auth')
 const path = require('path')
 
 dotenv.config()
@@ -21,6 +22,8 @@ app.set('view engine', 'ejs');
 
 // update location of views folder that res.render pulls from
 app.set('views', path.join(__dirname, '/src/templates/views'));
+
+app.use(authenticate)
 
 /* Initialize Routes */
 require("./src/routes")(app)
