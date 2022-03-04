@@ -1,7 +1,3 @@
-/** 
-* /routes/dashboard/index.js
-*/
-
 const MainDashboardRouter = require("express").Router()
 
 MainDashboardRouter.route("/")
