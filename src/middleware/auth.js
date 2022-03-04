@@ -1,5 +1,9 @@
 const jwt = require("jsonwebtoken")
-const { unprotectedRoutes } = require("../../config.json")
+const unprotectedRoutes = [
+    "/auth/login",
+    "/auth/register",
+    "/graphql"
+]
 
 const authenticate = async (req, res, next) => {
     const token = req.cookies?.jwtToken || ""
