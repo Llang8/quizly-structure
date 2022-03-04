@@ -6,6 +6,7 @@ const schema = require('./src/graphql/schema')
 const { authenticate } = require('./src/middleware/auth')
 const { userData } = require('./src/middleware/userData')
 const path = require('path')
+const cookieParser = require('cookie-parser')
 
 dotenv.config()
 
